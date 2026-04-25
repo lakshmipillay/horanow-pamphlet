@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HoraNow - Temple Pamphlet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Poppins', sans-serif; background: #f5f0e8; }
+
+  .page {
+    width: 148mm; min-height: 210mm; margin: 10mm auto; padding: 8mm;
+    background: linear-gradient(160deg, #fff9f0 0%, #fef0d9 100%);
+    border: 2px solid #c9963b; position: relative; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  .page::before {
+    content: ''; position: absolute; top: 3mm; left: 3mm; right: 3mm; bottom: 3mm;
+    border: 1px solid #d4a94e; pointer-events: none;
+  }
+
+  .header { text-align: center; padding: 5mm 0 3mm; }
+  .app-icon {
+    width: 22mm; height: 22mm; margin: 0 auto 3mm;
+    background: linear-gradient(135deg, #ff9500, #ffb84d);
+    border-radius: 5mm; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 8px rgba(255,149,0,0.3);
+  }
+  .app-icon .sun {
+    width: 14mm; height: 14mm;
+    background: radial-gradient(circle, #ffd700 40%, #ff8c00 100%);
+    border-radius: 50%; box-shadow: 0 0 12px rgba(255,215,0,0.6);
+  }
+  h1 { font-size: 22pt; font-weight: 700; color: #8b4513; }
+  .tagline { font-size: 11pt; color: #a0522d; font-style: italic; margin-bottom: 2mm; }
+
+  /* Screenshots */
+  .screenshots { display: flex; justify-content: center; gap: 3mm; margin: 4mm 0; }
+  .screenshots img {
+    width: 32mm; height: 56mm; object-fit: cover;
+    border-radius: 3mm; border: 1px solid #d4a94e;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  /* Highlights */
+  .highlights { margin: 4mm 0; }
+  .highlights h2 { font-size: 13pt; color: #8b4513; text-align: center; margin-bottom: 3mm; }
+  .highlight-item {
+    display: flex; align-items: center; gap: 2.5mm;
+    margin-bottom: 2.5mm; padding: 0 2mm;
+  }
+  .highlight-item .plus {
+    flex-shrink: 0; font-size: 13pt; font-weight: 700; color: #c9963b;
+  }
+  .highlight-item span { font-size: 11pt; color: #5a3e1b; }
+
+  /* Use for box */
+  .use-box {
+    background: #fff5e0; border: 1px solid #d4a94e;
+    border-radius: 3mm; padding: 4mm; margin: 4mm 0; text-align: center;
+  }
+  .use-box h2 { font-size: 12pt; color: #8b4513; margin-bottom: 2mm; }
+  .use-box p { font-size: 10.5pt; color: #5a3e1b; }
+
+  /* Download */
+  .download-section {
+    text-align: center; margin: 4mm 0; padding: 4mm;
+    background: linear-gradient(135deg, #8b4513, #a0522d);
+    border-radius: 3mm; color: white;
+  }
+  .download-section h2 { font-size: 14pt; margin-bottom: 1mm; }
+  .download-section p { font-size: 9pt; opacity: 0.85; }
+
+  /* QR */
+  .qr-row { display: flex; justify-content: center; gap: 8mm; margin: 3mm 0; }
+  .qr-box {
+    width: 28mm; background: white; border: 1px solid #d4a94e;
+    border-radius: 2mm; padding: 2mm; text-align: center;
+  }
+  .qr-box .qr-img {
+    width: 24mm; height: 24mm; background: #eee;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7pt; color: #999;
+  }
+  .qr-box .label { font-size: 8pt; font-weight: 700; color: #8b4513; margin-top: 1mm; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 3mm; padding-top: 2mm; border-top: 0.5px solid #d4a94e; }
+  .footer .mantra { font-size: 9pt; color: #8b4513; font-weight: 700; margin-bottom: 1mm; }
+  .footer p { font-size: 7.5pt; color: #8b7355; }
+
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+  @page { size: A5; margin: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="app-icon"><div class="sun"></div></div>
+    <h1>HoraNow</h1>
+    <div class="tagline">Ancient Wisdom. Right When You Need It.</div>
+  </div>
+
+  <div class="screenshots">
+    <img src="screenshots/horanow_horaview.jpeg" alt="Hora View">
+    <img src="screenshots/horanow_dayrulers.jpeg" alt="Day Rulers">
+    <img src="screenshots/horanow_sliderview.jpeg" alt="Slider View">
+  </div>
+
+  <div class="highlights">
+    <h2>What You Get</h2>
+    <div class="highlight-item"><span class="plus">+</span><span>Planetary Hours — know the best time for every activity</span></div>
+    <div class="highlight-item"><span class="plus">+</span><span>Rahu Kala & Abhijit Muhurta — avoid inauspicious windows</span></div>
+    <div class="highlight-item"><span class="plus">+</span><span>Choghadiya & Gowri Panchangam — day & night timing guide</span></div>
+    <div class="highlight-item"><span class="plus">+</span><span>Complete Panchanga — Tithi, Nakshatra, Yoga & more</span></div>
+    <div class="highlight-item"><span class="plus">+</span><span>Vrat Calendar — never miss Ekadashi or fasting days</span></div>
+  </div>
+
+  <div class="use-box">
+    <h2>Perfect For</h2>
+    <p>Puja & Prayers &nbsp;·&nbsp; New Beginnings &nbsp;·&nbsp; Travel &nbsp;·&nbsp; Business</p>
+  </div>
+
+  <div class="download-section">
+    <h2>Download Free Today</h2>
+    <p>Search "HoraNow" on App Store & Google Play</p>
+  </div>
+
+  <div class="qr-row">
+    <div class="qr-box"><div class="qr-img">[QR Code]</div><div class="label">iPhone</div></div>
+    <div class="qr-box"><div class="qr-img">[QR Code]</div><div class="label">Android</div></div>
+  </div>
+
+  <div class="footer">
+    <p class="mantra">OM SHUBHAM KAROTU</p>
+    <p>www.horanow.app</p>
+  </div>
+</div>
+</body>
+</html>
