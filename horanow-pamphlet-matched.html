@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HoraNow - Matched Layout Pamphlet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: #3D2B1F;
+    display: flex;
+    justify-content: center;
+    padding: 10mm;
+  }
+
+  /* ========== PAGE ========== */
+  .page {
+    width: 148mm;
+    min-height: 210mm;
+    padding: 12mm;
+    position: relative;
+    overflow: hidden;
+
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(180, 150, 100, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(160, 130, 80, 0.1) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 80%, rgba(140, 110, 60, 0.08) 0%, transparent 50%),
+      linear-gradient(170deg, #f2e6d0 0%, #e6d5b8 30%, #dcc9a3 60%, #e8d9bf 100%);
+    box-shadow:
+      inset 0 0 80px rgba(61, 43, 31, 0.08),
+      0 4px 24px rgba(0,0,0,0.25);
+  }
+
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 3mm; left: 3mm; right: 3mm; bottom: 3mm;
+    border: 2px solid #3D2B1F;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .page::after {
+    content: '';
+    position: absolute;
+    top: 5mm; left: 5mm; right: 5mm; bottom: 5mm;
+    border: 0.5px solid rgba(61, 43, 31, 0.3);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ========== CORNER FLOURISHES ========== */
+  .corner {
+    position: absolute;
+    width: 20mm;
+    height: 20mm;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .corner svg { width: 100%; height: 100%; }
+  .corner.tl { top: 2mm; left: 2mm; }
+  .corner.tr { top: 2mm; right: 2mm; transform: scaleX(-1); }
+  .corner.bl { bottom: 2mm; left: 2mm; transform: scaleY(-1); }
+  .corner.br { bottom: 2mm; right: 2mm; transform: scale(-1, -1); }
+
+  /* ========== HEADER ========== */
+  .header {
+    text-align: center;
+    padding: 3mm 0 2mm;
+    position: relative;
+    z-index: 3;
+  }
+
+  .main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22pt;
+    font-weight: 900;
+    color: #3D2B1F;
+    line-height: 1.1;
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10.5pt;
+    font-style: italic;
+    color: #5a3e1b;
+    margin-top: 1.5mm;
+  }
+
+  /* ========== HERO SECTION ========== */
+  .hero {
+    position: relative;
+    margin: 2mm 0;
+    height: 72mm;
+    border: 1.5px solid #c9963b;
+    border-radius: 1mm;
+    overflow: hidden;
+    z-index: 3;
+    background: linear-gradient(135deg, #0a0a2e 0%, #1a0a3e 25%, #0d1b3e 50%, #1a0a2e 75%, #0a0a1e 100%);
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.4);
+  }
+
+  /* Stars */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(1px 1px at 5% 10%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 12% 30%, #fff 100%, transparent),
+      radial-gradient(1.5px 1.5px at 20% 55%, #ffd 100%, transparent),
+      radial-gradient(1px 1px at 8% 75%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 30% 15%, #fff 100%, transparent),
+      radial-gradient(1.5px 1.5px at 38% 45%, #ffd 100%, transparent),
+      radial-gradient(1px 1px at 45% 70%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 55% 20%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 62% 55%, #fff 100%, transparent),
+      radial-gradient(1.5px 1.5px at 70% 35%, #ffd 100%, transparent),
+      radial-gradient(1px 1px at 78% 65%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 85% 15%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 92% 45%, #fff 100%, transparent),
+      radial-gradient(1.5px 1.5px at 95% 80%, #ffd 100%, transparent),
+      radial-gradient(1px 1px at 50% 90%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 15% 92%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 75% 88%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 88% 72%, #fff 100%, transparent);
+    z-index: 0;
+  }
+
+  /* Nebula glow */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 15%; left: 15%; width: 70%; height: 50%;
+    background: radial-gradient(ellipse,
+      rgba(120, 60, 180, 0.25) 0%,
+      rgba(60, 30, 120, 0.12) 40%,
+      transparent 70%);
+    z-index: 0;
+  }
+
+  .hero-text-top {
+    position: absolute;
+    top: 3mm;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.9);
+    z-index: 2;
+    text-align: center;
+    white-space: nowrap;
+    letter-spacing: 1px;
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    padding: 8mm 4mm 4mm;
+    gap: 2mm;
+  }
+
+  /* ========== ASTROLOGICAL WHEEL ========== */
+  .wheel {
+    width: 50mm;
+    height: 50mm;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .wheel-ring {
+    position: absolute;
+    border-radius: 50%;
+  }
+  .wheel-ring.outer {
+    top: 0; left: 0; width: 100%; height: 100%;
+    border: 1.5px solid rgba(200, 160, 80, 0.7);
+  }
+  .wheel-ring.mid {
+    top: 10%; left: 10%; width: 80%; height: 80%;
+    border: 1px solid rgba(200, 160, 80, 0.5);
+  }
+  .wheel-ring.inner {
+    top: 22%; left: 22%; width: 56%; height: 56%;
+    border: 1px solid rgba(200, 160, 80, 0.4);
+  }
+  .wheel-ring.core {
+    top: 34%; left: 34%; width: 32%; height: 32%;
+    border: 1.5px solid rgba(220, 180, 80, 0.8);
+    background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+  }
+
+  /* Wheel segments - 12 houses */
+  .wheel-segment {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 50%; height: 0.5px;
+    background: rgba(200, 160, 80, 0.35);
+    transform-origin: left center;
+  }
+
+  /* Zodiac symbols */
+  .zodiac {
+    position: absolute;
+    font-size: 7pt;
+    color: rgba(220, 200, 150, 0.85);
+    z-index: 2;
+  }
+
+  /* Planet dots - colorful */
+  .planet-dot {
+    position: absolute;
+    width: 3mm;
+    height: 3mm;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 3px rgba(255,255,255,0.3);
+  }
+
+  /* Om center */
+  .om-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 13pt;
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    z-index: 3;
+  }
+
+  /* ========== PHONE MOCKUP ========== */
+  .phone-area {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  .phone {
+    width: 28mm;
+    height: 52mm;
+    background: #1a1a2e;
+    border: 1.5px solid #666;
+    border-radius: 3.5mm;
+    padding: 2.5mm 2mm;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.6);
+  }
+
+  /* Phone notch */
+  .phone-notch {
+    width: 12mm;
+    height: 2mm;
+    background: #333;
+    border-radius: 0 0 2mm 2mm;
+    margin: 0 auto 1.5mm;
+  }
+
+  .phone-header {
+    background: linear-gradient(135deg, #ff9500, #ffb84d);
+    border-radius: 2mm;
+    padding: 2mm;
+    text-align: center;
+    margin-bottom: 1.5mm;
+  }
+  .phone-header .planet-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 8pt;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1.5px;
+    display: block;
+  }
+  .phone-header .countdown {
+    font-size: 5.5pt;
+    color: rgba(255,255,255,0.85);
+    margin-top: 0.5mm;
+    display: block;
+  }
+
+  .phone-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2mm;
+  }
+
+  .phone-item {
+    background: rgba(255,255,255,0.95);
+    border-radius: 1.5mm;
+    padding: 1.5mm 2mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .phone-item .planet {
+    font-size: 6pt;
+    font-weight: 600;
+    color: #333;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .phone-item .time {
+    font-size: 5pt;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 1mm;
+  }
+  .phone-item .icon {
+    font-size: 6pt;
+  }
+
+  .phone-nav {
+    display: flex;
+    justify-content: center;
+    gap: 3mm;
+    padding-top: 2mm;
+  }
+  .phone-nav span {
+    width: 2.5mm; height: 2.5mm;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: block;
+  }
+  .phone-nav span.active {
+    background: rgba(255,255,255,0.7);
+  }
+
+  /* ========== FEATURES SECTION ========== */
+  .features {
+    margin: 3mm 0;
+    position: relative;
+    z-index: 3;
+  }
+
+  .features-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13pt;
+    font-weight: 700;
+    color: #3D2B1F;
+    text-align: center;
+    margin-bottom: 2.5mm;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: baseline;
+    gap: 2mm;
+    margin-bottom: 1.8mm;
+    padding: 0 4mm;
+  }
+
+  .feature-bullet {
+    flex-shrink: 0;
+    width: 3.5mm;
+    height: 3.5mm;
+    background: #3D2B1F;
+    border-radius: 50%;
+    margin-top: 0.5mm;
+  }
+
+  .feature-text {
+    font-size: 10pt;
+    color: #3D2B1F;
+    line-height: 1.3;
+  }
+
+  /* ========== DOWNLOAD SECTION ========== */
+  .download-section {
+    margin: 3mm 0 2mm;
+    position: relative;
+    z-index: 3;
+  }
+
+  .download-text {
+    text-align: center;
+    font-size: 9pt;
+    color: #3D2B1F;
+    margin-bottom: 2mm;
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  .badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 5mm;
+    margin-bottom: 2mm;
+  }
+
+  .badge {
+    width: 30mm;
+    height: 10mm;
+    background: #1a1a1a;
+    border-radius: 2mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1mm;
+  }
+  .badge .store {
+    color: white;
+    font-size: 7pt;
+    font-weight: 700;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .badge .sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 5pt;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .qr-row {
+    display: flex;
+    justify-content: center;
+    gap: 10mm;
+    margin-top: 2mm;
+  }
+
+  .qr-box {
+    text-align: center;
+  }
+  .qr-placeholder {
+    width: 20mm;
+    height: 20mm;
+    background: white;
+    border: 1px solid #3D2B1F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6pt;
+    color: #999;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .qr-label {
+    font-size: 7pt;
+    color: #3D2B1F;
+    font-weight: 600;
+    margin-top: 1mm;
+  }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    text-align: center;
+    margin-top: 2mm;
+    position: relative;
+    z-index: 3;
+  }
+
+  .footer .tagline-bottom {
+    display: inline-block;
+    position: relative;
+    padding: 1mm 4mm;
+  }
+
+  /* Yellow brushstroke highlight behind tagline */
+  .footer .tagline-bottom::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -3mm;
+    right: -3mm;
+    height: 6mm;
+    background: rgba(233, 196, 106, 0.55);
+    transform: translateY(-50%) rotate(-0.5deg);
+    border-radius: 1mm;
+    z-index: -1;
+  }
+
+  .footer .tagline-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 10pt;
+    font-weight: 700;
+    color: #3D2B1F;
+    letter-spacing: 0.5px;
+  }
+
+  .footer .url {
+    font-size: 7.5pt;
+    color: #5a3e1b;
+    margin-top: 1.5mm;
+  }
+
+  /* ========== SUN ICON ========== */
+  .sun-icon {
+    position: absolute;
+    bottom: 7mm;
+    right: 8mm;
+    width: 8mm;
+    height: 8mm;
+    z-index: 2;
+    opacity: 0.25;
+  }
+  .sun-icon svg { width: 100%; height: 100%; }
+
+  @media print {
+    body { background: none; padding: 0; }
+    .page { margin: 0; box-shadow: none; }
+  }
+  @page { size: A5; margin: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Corner flourishes -->
+  <div class="corner tl"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5C5 5 5 40 5 50C5 55 8 60 15 62C22 64 30 60 32 55C34 50 30 45 25 44C20 43 16 46 16 50" stroke="#3D2B1F" stroke-width="1.5" fill="none"/><path d="M5 5C5 5 40 5 50 5C55 5 60 8 62 15C64 22 60 30 55 32C50 34 45 30 44 25C43 20 46 16 50 16" stroke="#3D2B1F" stroke-width="1.5" fill="none"/><circle cx="7" cy="7" r="2" fill="#3D2B1F" opacity="0.4"/></svg></div>
+  <div class="corner tr"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5C5 5 5 40 5 50C5 55 8 60 15 62C22 64 30 60 32 55C34 50 30 45 25 44C20 43 16 46 16 50" stroke="#3D2B1F" stroke-width="1.5" fill="none"/><path d="M5 5C5 5 40 5 50 5C55 5 60 8 62 15C64 22 60 30 55 32C50 34 45 30 44 25C43 20 46 16 50 16" stroke="#3D2B1F" stroke-width="1.5" fill="none"/><circle cx="7" cy="7" r="2" fill="#3D2B1F" opacity="0.4"/></svg></div>
+  <div class="corner bl"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5C5 5 5 40 5 50C5 55 8 60 15 62C22 64 30 60 32 55C34 50 30 45 25 44C20 43 16 46 16 50" stroke="#3D2B1F" stroke-width="1.5" fill="none"/><path d="M5 5C5 5 40 5 50 5C55 5 60 8 62 15C64 22 60 30 55 32C50 34 45 30 44 25C43 20 46 16 50 16" stroke="#3D2B1F" stroke-width="1.5" fill="none"/><circle cx="7" cy="7" r="2" fill="#3D2B1F" opacity="0.4"/></svg></div>
+  <div class="corner br"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5C5 5 5 40 5 50C5 55 8 60 15 62C22 64 30 60 32 55C34 50 30 45 25 44C20 43 16 46 16 50" stroke="#3D2B1F" stroke-width="1.5" fill="none"/><path d="M5 5C5 5 40 5 50 5C55 5 60 8 62 15C64 22 60 30 55 32C50 34 45 30 44 25C43 20 46 16 50 16" stroke="#3D2B1F" stroke-width="1.5" fill="none"/><circle cx="7" cy="7" r="2" fill="#3D2B1F" opacity="0.4"/></svg></div>
+
+  <!-- Sun icon -->
+  <div class="sun-icon"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="8" stroke="#3D2B1F" stroke-width="1"/><circle cx="20" cy="20" r="4" fill="#3D2B1F" opacity="0.3"/><line x1="20" y1="4" x2="20" y2="10" stroke="#3D2B1F" stroke-width="0.8"/><line x1="20" y1="30" x2="20" y2="36" stroke="#3D2B1F" stroke-width="0.8"/><line x1="4" y1="20" x2="10" y2="20" stroke="#3D2B1F" stroke-width="0.8"/><line x1="30" y1="20" x2="36" y2="20" stroke="#3D2B1F" stroke-width="0.8"/><line x1="8.7" y1="8.7" x2="12.9" y2="12.9" stroke="#3D2B1F" stroke-width="0.8"/><line x1="27.1" y1="27.1" x2="31.3" y2="31.3" stroke="#3D2B1F" stroke-width="0.8"/><line x1="31.3" y1="8.7" x2="27.1" y2="12.9" stroke="#3D2B1F" stroke-width="0.8"/><line x1="12.9" y1="27.1" x2="8.7" y2="31.3" stroke="#3D2B1F" stroke-width="0.8"/></svg></div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="main-title">Unlock Auspicious<br>Moments Daily</div>
+    <div class="tagline">Connect with Ancient Wisdom, Modern Simplicity</div>
+  </div>
+
+  <!-- HERO: Astrological chart + Phone -->
+  <div class="hero">
+    <div class="hero-text-top">Your Complete Vedic Time System</div>
+    <div class="hero-content">
+
+      <!-- Astrological Wheel -->
+      <div class="wheel">
+        <div class="wheel-ring outer"></div>
+        <div class="wheel-ring mid"></div>
+        <div class="wheel-ring inner"></div>
+        <div class="wheel-ring core"></div>
+
+        <!-- 12 radial segments -->
+        <div class="wheel-segment" style="transform: rotate(0deg);"></div>
+        <div class="wheel-segment" style="transform: rotate(30deg);"></div>
+        <div class="wheel-segment" style="transform: rotate(60deg);"></div>
+        <div class="wheel-segment" style="transform: rotate(90deg);"></div>
+        <div class="wheel-segment" style="transform: rotate(120deg);"></div>
+        <div class="wheel-segment" style="transform: rotate(150deg);"></div>
+        <div class="wheel-segment" style="transform: rotate(180deg);"></div>
+        <div class="wheel-segment" style="transform: rotate(210deg);"></div>
+        <div class="wheel-segment" style="transform: rotate(240deg);"></div>
+        <div class="wheel-segment" style="transform: rotate(270deg);"></div>
+        <div class="wheel-segment" style="transform: rotate(300deg);"></div>
+        <div class="wheel-segment" style="transform: rotate(330deg);"></div>
+
+        <!-- Zodiac symbols around outer ring -->
+        <span class="zodiac" style="top: 2%; left: 47%;">♈</span>
+        <span class="zodiac" style="top: 10%; left: 72%;">♉</span>
+        <span class="zodiac" style="top: 30%; left: 88%;">♊</span>
+        <span class="zodiac" style="top: 55%; left: 90%;">♋</span>
+        <span class="zodiac" style="top: 76%; left: 76%;">♌</span>
+        <span class="zodiac" style="top: 90%; left: 50%;">♍</span>
+        <span class="zodiac" style="top: 82%; left: 24%;">♎</span>
+        <span class="zodiac" style="top: 62%; left: 8%;">♏</span>
+        <span class="zodiac" style="top: 38%; left: 4%;">♐</span>
+        <span class="zodiac" style="top: 15%; left: 14%;">♑</span>
+        <span class="zodiac" style="top: 4%; left: 32%;">♒</span>
+        <span class="zodiac" style="top: 6%; left: 60%;">♓</span>
+
+        <!-- Planet dots -->
+        <div class="planet-dot" style="top: 20%; left: 35%; background: #ff6b6b;"></div>
+        <div class="planet-dot" style="top: 40%; left: 60%; background: #4ecdc4;"></div>
+        <div class="planet-dot" style="top: 55%; left: 30%; background: #ffd93d;"></div>
+        <div class="planet-dot" style="top: 35%; left: 75%; background: #c084fc;"></div>
+        <div class="planet-dot" style="top: 65%; left: 55%; background: #fb923c;"></div>
+
+        <!-- Om -->
+        <span class="om-center">ॐ</span>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="phone-area">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-header">
+            <span class="planet-name">JUPITER</span>
+            <span class="countdown">1h 23m remaining</span>
+          </div>
+          <div class="phone-list">
+            <div class="phone-item">
+              <span class="planet">☉ Sun</span>
+              <span class="time"><span class="icon">☀️</span> 06:14 - 07:18</span>
+            </div>
+            <div class="phone-item">
+              <span class="planet">♀ Venus</span>
+              <span class="time"><span class="icon">🌙</span> 07:18 - 08:22</span>
+            </div>
+            <div class="phone-item">
+              <span class="planet">☿ Mercury</span>
+              <span class="time"><span class="icon">☀️</span> 08:22 - 09:26</span>
+            </div>
+            <div class="phone-item">
+              <span class="planet">☽ Moon</span>
+              <span class="time"><span class="icon">🌙</span> 09:26 - 10:30</span>
+            </div>
+            <div class="phone-item">
+              <span class="planet">♄ Saturn</span>
+              <span class="time"><span class="icon">☀️</span> 10:30 - 11:34</span>
+            </div>
+          </div>
+          <div class="phone-nav">
+            <span></span><span class="active"></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="features">
+    <div class="features-title">Why "HoraNow"?</div>
+    <div class="feature-item">
+      <div class="feature-bullet"></div>
+      <div class="feature-text">Daily auspicious and inauspicious windows</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-bullet"></div>
+      <div class="feature-text">Choghadiya, Gowri Panchangam &amp; Complete Panchanga</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-bullet"></div>
+      <div class="feature-text">Vrat Calendar — Never miss Ekadashi or fasting days</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-bullet"></div>
+      <div class="feature-text">Perfect for Pujas, Travel &amp; Business</div>
+    </div>
+  </div>
+
+  <!-- DOWNLOAD -->
+  <div class="download-section">
+    <p class="download-text">Download Free Today — Search "HoraNow" on App Store or Google Play</p>
+    <div class="badge-row">
+      <div class="badge"><span class="store">App Store</span></div>
+      <div class="badge"><span class="store">Google Play</span></div>
+    </div>
+    <div class="qr-row">
+      <div class="qr-box">
+        <div class="qr-placeholder">[QR Code]</div>
+        <div class="qr-label">iPhone</div>
+      </div>
+      <div class="qr-box">
+        <div class="qr-placeholder">[QR Code]</div>
+        <div class="qr-label">Android</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="tagline-bottom">
+      <span class="tagline-text">Your Guide to Harmonious Living</span>
+    </div>
+    <p class="url">www.horanow.app</p>
+  </div>
+
+</div>
+</body>
+</html>
