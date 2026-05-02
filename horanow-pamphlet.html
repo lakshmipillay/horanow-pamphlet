@@ -10,88 +10,88 @@
   body { font-family: 'Poppins', sans-serif; background: #f5f0e8; }
 
   .page {
-    width: 148mm; min-height: 210mm; margin: 10mm auto; padding: 8mm;
+    width: 210mm; min-height: 297mm; margin: 10mm auto; padding: 12mm;
     background: linear-gradient(160deg, #fff9f0 0%, #fef0d9 100%);
     border: 2px solid #c9963b; position: relative; overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   }
   .page::before {
-    content: ''; position: absolute; top: 3mm; left: 3mm; right: 3mm; bottom: 3mm;
+    content: ''; position: absolute; top: 4mm; left: 4mm; right: 4mm; bottom: 4mm;
     border: 1px solid #d4a94e; pointer-events: none;
   }
 
-  .header { text-align: center; padding: 5mm 0 3mm; }
+  .header { text-align: center; padding: 8mm 0 5mm; }
   .app-icon {
-    width: 22mm; height: 22mm; margin: 0 auto 3mm;
+    width: 32mm; height: 32mm; margin: 0 auto 5mm;
     background: linear-gradient(135deg, #ff9500, #ffb84d);
-    border-radius: 5mm; display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 2px 8px rgba(255,149,0,0.3);
+    border-radius: 7mm; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 3px 12px rgba(255,149,0,0.3);
   }
   .app-icon .sun {
-    width: 14mm; height: 14mm;
+    width: 20mm; height: 20mm;
     background: radial-gradient(circle, #ffd700 40%, #ff8c00 100%);
-    border-radius: 50%; box-shadow: 0 0 12px rgba(255,215,0,0.6);
+    border-radius: 50%; box-shadow: 0 0 16px rgba(255,215,0,0.6);
   }
-  h1 { font-size: 22pt; font-weight: 700; color: #8b4513; }
-  .tagline { font-size: 11pt; color: #a0522d; font-style: italic; margin-bottom: 2mm; }
+  h1 { font-size: 32pt; font-weight: 700; color: #8b4513; }
+  .tagline { font-size: 15pt; color: #a0522d; font-style: italic; margin-bottom: 3mm; }
 
   /* Screenshots */
-  .screenshots { display: flex; justify-content: center; gap: 3mm; margin: 4mm 0; }
+  .screenshots { display: flex; justify-content: center; gap: 5mm; margin: 6mm 0; }
   .screenshots img {
-    width: 32mm; height: 56mm; object-fit: cover;
-    border-radius: 3mm; border: 1px solid #d4a94e;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    width: 46mm; height: 80mm; object-fit: cover;
+    border-radius: 4mm; border: 1px solid #d4a94e;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
   }
 
   /* Highlights */
-  .highlights { margin: 4mm 0; }
-  .highlights h2 { font-size: 13pt; color: #8b4513; text-align: center; margin-bottom: 3mm; }
+  .highlights { margin: 6mm 0; }
+  .highlights h2 { font-size: 18pt; color: #8b4513; text-align: center; margin-bottom: 4mm; }
   .highlight-item {
-    display: flex; align-items: center; gap: 2.5mm;
-    margin-bottom: 2.5mm; padding: 0 2mm;
+    display: flex; align-items: center; gap: 3mm;
+    margin-bottom: 3.5mm; padding: 0 4mm;
   }
   .highlight-item .plus {
-    flex-shrink: 0; font-size: 13pt; font-weight: 700; color: #c9963b;
+    flex-shrink: 0; font-size: 18pt; font-weight: 700; color: #c9963b;
   }
-  .highlight-item span { font-size: 11pt; color: #5a3e1b; }
+  .highlight-item span { font-size: 15pt; color: #5a3e1b; }
 
   /* Use for box */
   .use-box {
     background: #fff5e0; border: 1px solid #d4a94e;
-    border-radius: 3mm; padding: 4mm; margin: 4mm 0; text-align: center;
+    border-radius: 4mm; padding: 6mm; margin: 6mm 0; text-align: center;
   }
-  .use-box h2 { font-size: 12pt; color: #8b4513; margin-bottom: 2mm; }
-  .use-box p { font-size: 10.5pt; color: #5a3e1b; }
+  .use-box h2 { font-size: 17pt; color: #8b4513; margin-bottom: 3mm; }
+  .use-box p { font-size: 14pt; color: #5a3e1b; }
 
   /* Download */
   .download-section {
-    text-align: center; margin: 4mm 0; padding: 4mm;
+    text-align: center; margin: 6mm 0; padding: 6mm;
     background: linear-gradient(135deg, #8b4513, #a0522d);
-    border-radius: 3mm; color: white;
+    border-radius: 4mm; color: white;
   }
-  .download-section h2 { font-size: 14pt; margin-bottom: 1mm; }
-  .download-section p { font-size: 9pt; opacity: 0.85; }
+  .download-section h2 { font-size: 20pt; margin-bottom: 2mm; }
+  .download-section p { font-size: 12pt; opacity: 0.85; }
 
   /* QR */
-  .qr-row { display: flex; justify-content: center; gap: 8mm; margin: 3mm 0; }
+  .qr-row { display: flex; justify-content: center; gap: 12mm; margin: 5mm 0; }
   .qr-box {
-    width: 28mm; background: white; border: 1px solid #d4a94e;
-    border-radius: 2mm; padding: 2mm; text-align: center;
+    width: 40mm; background: white; border: 1px solid #d4a94e;
+    border-radius: 3mm; padding: 3mm; text-align: center;
   }
   .qr-box .qr-img {
-    width: 24mm; height: 24mm; background: #eee;
+    width: 34mm; height: 34mm; background: #eee;
     display: flex; align-items: center; justify-content: center;
-    font-size: 7pt; color: #999;
+    font-size: 9pt; color: #999;
   }
-  .qr-box .label { font-size: 8pt; font-weight: 700; color: #8b4513; margin-top: 1mm; }
+  .qr-box .label { font-size: 11pt; font-weight: 700; color: #8b4513; margin-top: 2mm; }
 
   /* Footer */
-  .footer { text-align: center; margin-top: 3mm; padding-top: 2mm; border-top: 0.5px solid #d4a94e; }
-  .footer .mantra { font-size: 9pt; color: #8b4513; font-weight: 700; margin-bottom: 1mm; }
-  .footer p { font-size: 7.5pt; color: #8b7355; }
+  .footer { text-align: center; margin-top: 5mm; padding-top: 3mm; border-top: 0.5px solid #d4a94e; }
+  .footer .mantra { font-size: 13pt; color: #8b4513; font-weight: 700; margin-bottom: 2mm; }
+  .footer p { font-size: 10pt; color: #8b7355; }
 
   @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
-  @page { size: A5; margin: 0; }
+  @page { size: A4; margin: 0; }
 </style>
 </head>
 <body>
