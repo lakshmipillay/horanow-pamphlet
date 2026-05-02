@@ -12,15 +12,15 @@
   <style>
     /* ── Print settings ─────────────────────────────────── */
     @page {
-      size: 8.5in 11in;
+      size: A4;
       margin: 0;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      width: 8.5in;
-      height: 11in;
+      width: 210mm;
+      height: 297mm;
       font-family: 'Outfit', sans-serif;
       background: #0a0e27;
       color: #f5f0e8;
@@ -32,7 +32,7 @@
     .poster {
       width: 100%;
       height: 100%;
-      padding: 0.22in 0.3in;
+      padding: 0.3in 0.35in;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -42,26 +42,26 @@
     .poster::before {
       content: '';
       position: absolute;
-      inset: 0.15in;
+      inset: 0.18in;
       border: 2px solid rgba(212, 175, 55, 0.4);
-      border-radius: 12px;
+      border-radius: 14px;
       pointer-events: none;
     }
 
     .poster::after {
       content: '';
       position: absolute;
-      inset: 0.2in;
+      inset: 0.24in;
       border: 1px solid rgba(212, 175, 55, 0.15);
-      border-radius: 10px;
+      border-radius: 12px;
       pointer-events: none;
     }
 
     /* ── Corner mandalas (CSS-drawn) ─────────────────────── */
     .corner-decor {
       position: absolute;
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: 100px;
       opacity: 0.2;
     }
     .corner-decor::before,
@@ -72,24 +72,24 @@
       border-radius: 50%;
     }
     .corner-decor::before {
-      width: 60px; height: 60px;
-      top: 10px; left: 10px;
+      width: 75px; height: 75px;
+      top: 12px; left: 12px;
     }
     .corner-decor::after {
-      width: 34px; height: 34px;
-      top: 23px; left: 23px;
+      width: 42px; height: 42px;
+      top: 29px; left: 29px;
     }
     .corner-decor .inner {
       position: absolute;
-      width: 14px; height: 14px;
+      width: 18px; height: 18px;
       border: 1px solid #d4af37;
       border-radius: 50%;
-      top: 33px; left: 33px;
+      top: 41px; left: 41px;
     }
-    .corner-tl { top: 0.12in; left: 0.12in; }
-    .corner-tr { top: 0.12in; right: 0.12in; transform: scaleX(-1); }
-    .corner-bl { bottom: 0.12in; left: 0.12in; transform: scaleY(-1); }
-    .corner-br { bottom: 0.12in; right: 0.12in; transform: scale(-1); }
+    .corner-tl { top: 0.14in; left: 0.14in; }
+    .corner-tr { top: 0.14in; right: 0.14in; transform: scaleX(-1); }
+    .corner-bl { bottom: 0.14in; left: 0.14in; transform: scaleY(-1); }
+    .corner-br { bottom: 0.14in; right: 0.14in; transform: scale(-1); }
 
     /* ── Starfield background ────────────────────────────── */
     .stars {
@@ -109,14 +109,14 @@
     /* ── Om symbol accents ───────────────────────────────── */
     .om-symbol {
       position: absolute;
-      font-size: 32px;
+      font-size: 40px;
       color: rgba(212, 175, 55, 0.08);
       font-family: 'Noto Sans Devanagari', serif;
     }
-    .om-tl { top: 0.42in; left: 0.4in; }
-    .om-tr { top: 0.42in; right: 0.4in; }
-    .om-bl { bottom: 0.42in; left: 0.4in; }
-    .om-br { bottom: 0.42in; right: 0.4in; }
+    .om-tl { top: 0.5in; left: 0.45in; }
+    .om-tr { top: 0.5in; right: 0.45in; }
+    .om-bl { bottom: 0.5in; left: 0.45in; }
+    .om-br { bottom: 0.5in; right: 0.45in; }
 
     /* ── App icon ────────────────────────────────────────── */
     .app-icon-container {
@@ -125,9 +125,9 @@
       z-index: 1;
     }
     .app-icon-glow {
-      width: 100px;
-      height: 100px;
-      border-radius: 24px;
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
       position: relative;
       display: flex;
       align-items: center;
@@ -136,25 +136,25 @@
     .app-icon-glow::before {
       content: '';
       position: absolute;
-      inset: -6px;
-      border-radius: 28px;
+      inset: -8px;
+      border-radius: 32px;
       background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
     }
     .app-icon-glow img {
-      width: 100px;
-      height: 100px;
-      border-radius: 24px;
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
       box-shadow: 0 4px 24px rgba(212, 175, 55, 0.3);
     }
 
     /* ── Title ────────────────────────────────────────────── */
     .title {
       font-family: 'Cinzel', serif;
-      font-size: 40px;
+      font-size: 48px;
       font-weight: 700;
       color: #d4af37;
-      letter-spacing: 3px;
-      margin-top: 0.05in;
+      letter-spacing: 4px;
+      margin-top: 0.08in;
       text-shadow: 0 2px 20px rgba(212, 175, 55, 0.4);
       z-index: 1;
     }
@@ -162,10 +162,10 @@
     /* ── Tagline ──────────────────────────────────────────── */
     .tagline {
       font-family: 'Cinzel', serif;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 400;
       color: rgba(245, 240, 232, 0.85);
-      margin-top: 1px;
+      margin-top: 2px;
       letter-spacing: 1px;
       text-align: center;
       line-height: 1.5;
@@ -174,20 +174,20 @@
 
     /* ── Divider ──────────────────────────────────────────── */
     .divider {
-      width: 120px;
+      width: 140px;
       height: 1px;
       background: linear-gradient(90deg, transparent, #d4af37, transparent);
-      margin: 0.06in 0;
+      margin: 0.1in 0;
       z-index: 1;
     }
 
     /* ── Hindi tagline ────────────────────────────────────── */
     .hindi-tagline {
       font-family: 'Noto Sans Devanagari', serif;
-      font-size: 12px;
+      font-size: 14px;
       color: rgba(212, 175, 55, 0.7);
       letter-spacing: 1px;
-      margin-bottom: 0.05in;
+      margin-bottom: 0.08in;
       z-index: 1;
     }
 
@@ -195,8 +195,8 @@
     .features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0.06in 0.2in;
-      max-width: 6in;
+      gap: 0.12in 0.3in;
+      max-width: 7in;
       z-index: 1;
     }
     .feature {
@@ -204,21 +204,21 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 8px;
+      gap: 10px;
     }
     .feature-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
       background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
       border: 1px solid rgba(212, 175, 55, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
+      font-size: 18px;
     }
     .feature-text {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 500;
       color: rgba(245, 240, 232, 0.9);
       line-height: 1.3;
@@ -226,13 +226,13 @@
 
     /* ── Description block ────────────────────────────────── */
     .description {
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 300;
       color: rgba(245, 240, 232, 0.65);
       text-align: center;
-      max-width: 5.5in;
-      line-height: 1.4;
-      margin-top: 0.06in;
+      max-width: 6.5in;
+      line-height: 1.5;
+      margin-top: 0.12in;
       padding: 0;
       z-index: 1;
     }
@@ -241,15 +241,15 @@
     .download-section {
       display: flex;
       align-items: center;
-      gap: 0.35in;
-      margin-top: 0.08in;
+      gap: 0.4in;
+      margin-top: 0.18in;
       z-index: 1;
     }
 
     .store-badges {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
     .store-badge {
       display: flex;
@@ -257,27 +257,27 @@
       gap: 10px;
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 10px;
-      padding: 6px 14px;
+      border-radius: 12px;
+      padding: 8px 16px;
       color: #fff;
       text-decoration: none;
-      min-width: 150px;
+      min-width: 170px;
     }
     .store-badge .store-icon {
-      font-size: 18px;
+      font-size: 20px;
     }
     .store-badge .store-text {
       display: flex;
       flex-direction: column;
     }
     .store-badge .store-text small {
-      font-size: 10px;
+      font-size: 11px;
       opacity: 0.7;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
     .store-badge .store-text strong {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
     }
 
@@ -285,24 +285,24 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
     .qr-code {
-      width: 84px;
-      height: 84px;
+      width: 100px;
+      height: 100px;
       background: #fff;
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .qr-code canvas {
+    .qr-code svg {
       width: 100% !important;
       height: 100% !important;
     }
     .qr-label {
-      font-size: 12px;
+      font-size: 13px;
       color: rgba(245, 240, 232, 0.5);
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -311,18 +311,18 @@
     /* ── Website URL ──────────────────────────────────────── */
     .website-url {
       font-family: 'Cinzel', serif;
-      font-size: 18px;
+      font-size: 22px;
       color: #d4af37;
-      letter-spacing: 2px;
-      margin-top: 0.06in;
+      letter-spacing: 3px;
+      margin-top: 0.12in;
       z-index: 1;
     }
 
     /* ── Supported languages ──────────────────────────────── */
     .languages {
-      font-size: 9px;
+      font-size: 10px;
       color: rgba(245, 240, 232, 0.4);
-      margin-top: 6px;
+      margin-top: 8px;
       letter-spacing: 0.5px;
       z-index: 1;
     }
